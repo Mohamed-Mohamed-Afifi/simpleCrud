@@ -24,6 +24,7 @@ public class Users {
     private int id;
     private String name;
     private String email;
+    private String phone;
     private Date dob;
 
 }
