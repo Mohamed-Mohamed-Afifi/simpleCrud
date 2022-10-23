@@ -21,10 +21,16 @@ import java.util.Date;
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
-    private int id;
+    private Long id;
     private String name;
     private String email;
     private String phone;
-    private Date dob;
+    private int age;
 
+    public Users(String name, String email, String phone, int age) {
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.age = age;
+    }
 }
