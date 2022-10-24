@@ -21,16 +21,16 @@ public class UserController {
     // Method: GET Request
     // Get the user by id
     @GetMapping(path = "{userId}")
-    public List<User> getUser(@PathVariable("userId") Long userId){
-        // Edit this method
-        return null;
+    public User getUser(@PathVariable("userId") Long userId){
+        return  userService.getUser(userId);
+
     }
 
     // Method: POST Request
     // Add new user to database
     @PostMapping
     public void addNewUser(@RequestBody User user){
-        // Edit this method
+        userService.addNewUser(user);
     }
 
     // Method: DELETE Request

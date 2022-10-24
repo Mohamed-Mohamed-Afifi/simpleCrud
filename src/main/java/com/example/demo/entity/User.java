@@ -20,15 +20,15 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
     @Column(length = 30)
-    private String name;
+    private String uname;
     @Column(length = 50, unique = true)
     private String email;
     private int age;
     @Column(length = 15)
     private String phone;
 
-    public User(String name, String email, int age, String phone) {
-        this.name = name;
+    public User(String uname, String email, int age, String phone) {
+        this.uname = uname;
         this.email = email;
         this.age = age;
         this.phone = phone;

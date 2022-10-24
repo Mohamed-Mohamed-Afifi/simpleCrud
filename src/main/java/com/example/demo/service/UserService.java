@@ -19,13 +19,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public List<User> getUser(Long userId) {
-        //write business Logic
-        return null;
+    public User getUser(Long userId ) {
+            return userRepository.getReferenceById(userId);
     }
 
     public void addNewUser(User user) {
-        // write business logic
+         userRepository.saveAndFlush(user);
     }
 
     @Transactional
@@ -53,4 +52,6 @@ public class UserService {
             user.setEmail(email);
         }
     }
+
+
 }
