@@ -1,4 +1,4 @@
-create schema core;
+
 create table core.users(
     id BIGINT NOT NULL AUTO_INCREMENT,
     uname VARCHAR(30) NOT NULL,
