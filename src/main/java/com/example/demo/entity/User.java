@@ -7,30 +7,30 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import java.util.Date;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     private Long id;
+    @Column(length = 30)
     private String name;
+    @Column(length = 50, unique = true)
     private String email;
-    private String phone;
     private int age;
+    @Column(length = 15)
+    private String phone;
 
-    public Users(String name, String email, String phone, int age) {
+    public User(String name, String email, int age, String phone) {
         this.name = name;
         this.email = email;
-        this.phone = phone;
         this.age = age;
+        this.phone = phone;
     }
 }
