@@ -24,7 +24,7 @@ public class User {
     @Column(length = 50, unique = true)
     private String email;
     private int age;
-    @Column(length = 15)
+    @Column(length = 11)
     private String phone;
 
     public User(String uname, String email, int age, String phone) {
