@@ -19,10 +19,17 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User getUser(Long userId ) {
-            return userRepository.getReferenceById(userId);
+    public List<User> getUsers() {
+        return userRepository.findAll();
     }
 
+    public User getUser(Long userId ) {
+        return userRepository.findById(userId).orElseThrow(
+                ()-> new IllegalStateException("user with id "+ userId +" doesn't exist")
+        );
+    }
+
+    @Transactional
     public void addNewUser(User user) {
          userRepository.saveAndFlush(user);
     }
@@ -52,6 +59,5 @@ public class UserService {
             user.setEmail(email);
         }
     }
-
 
 }
