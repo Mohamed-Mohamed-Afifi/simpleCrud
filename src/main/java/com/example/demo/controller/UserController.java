@@ -18,16 +18,25 @@ public class UserController {
         this.userService = userService;
     }
 
+    // Method: Get Request
+    // Get all users
+    // Route: "/user"
+    @GetMapping
+    public List<User> getUsers(){
+        return userService.getUsers();
+    }
+
     // Method: GET Request
     // Get the user by id
+    // Route: "/user/{userId}"
     @GetMapping(path = "{userId}")
     public User getUser(@PathVariable("userId") Long userId){
         return  userService.getUser(userId);
-
     }
 
     // Method: POST Request
     // Add new user to database
+    // Route: "/user"
     @PostMapping
     public void addNewUser(@RequestBody User user){
         userService.addNewUser(user);
@@ -35,6 +44,7 @@ public class UserController {
 
     // Method: DELETE Request
     // Delete user from database using user_id
+    // Route: "/user/{userId}"
     @DeleteMapping(path = "{userId}")
     public void deleteUser(@PathVariable("userId") Long userId){
         userService.deleteUser(userId);
@@ -42,6 +52,7 @@ public class UserController {
 
     // Method: PUT Request
     // Update email for existing user using user_id
+    // Route: "/user/{userId}"
     @PutMapping(path = "{userId}")
     public void updateUser(
             @PathVariable("userId") Long userId,
