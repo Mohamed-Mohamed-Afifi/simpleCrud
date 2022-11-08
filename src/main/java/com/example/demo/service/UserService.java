@@ -30,21 +30,22 @@ public class UserService {
     }
 
     @Transactional
-    public void addNewUser(User user) {
+    public List<User> addNewUser(User user) {
          userRepository.saveAndFlush(user);
+        return userRepository.findAll();
     }
 
     @Transactional
-    public void deleteUser(Long userId) {
+    public List<User> deleteUser(Long userId) {
         User user = userRepository.findById(userId).orElseThrow(
                 ()-> new IllegalStateException("user with id "+ userId +" doesn't exist")
         );
-        userRepository.deleteById(userId);
-
+          userRepository.deleteById(userId);
+        return userRepository.findAll();
     }
 
     @Transactional
-    public void updateUser(Long userId, String email) {
+    public List<User> updateUser(Long userId, String email) {
         // check if the user exists or not
         User user = userRepository.findById(userId).orElseThrow(
                 ()-> new IllegalStateException("user with id "+ userId +" doesn't exist")
@@ -57,7 +58,9 @@ public class UserService {
                 throw new IllegalStateException("email taken");
             });
             user.setEmail(email);
+
         }
+        return userRepository.findAll();
     }
 
 }
