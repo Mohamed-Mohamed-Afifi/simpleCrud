@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(path = "/user")
+@CrossOrigin("*")
 public class UserController {
     private final UserService userService;
 
@@ -38,26 +39,29 @@ public class UserController {
     // Add new user to database
     // Route: "/user"
     @PostMapping
-    public void addNewUser(@RequestBody User user){
+    public List<User> addNewUser(@RequestBody User user){
         userService.addNewUser(user);
+        return userService.getUsers();
     }
 
     // Method: DELETE Request
     // Delete user from database using user_id
     // Route: "/user/{userId}"
     @DeleteMapping(path = "{userId}")
-    public void deleteUser(@PathVariable("userId") Long userId){
+    public List<User> deleteUser(@PathVariable("userId") Long userId){
         userService.deleteUser(userId);
+        return userService.getUsers();
     }
 
     // Method: PUT Request
     // Update email for existing user using user_id
     // Route: "/user/{userId}"
     @PutMapping(path = "{userId}")
-    public void updateUser(
+    public List<User> updateUser(
             @PathVariable("userId") Long userId,
             @RequestParam(required = false) String email){
         userService.updateUser(userId, email);
+        return userService.getUsers();
     }
 
 }
