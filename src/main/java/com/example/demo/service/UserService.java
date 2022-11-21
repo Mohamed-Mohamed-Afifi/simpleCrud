@@ -23,9 +23,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> getUser(String title ) {
+    public List<User> getUser(String keyword ) {
 
-        return userRepository.searchByTitleLike(title);
+        return userRepository.searchBykeywordLike(keyword);
 
     }
 
