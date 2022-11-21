@@ -23,10 +23,14 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public List<User> getUser(String keyword ) {
+    public User getUser(Long userId) {
+        return userRepository.findById(userId).orElseThrow(
+                ()-> new IllegalStateException("user with id "+ userId +" doesn't exist")
+        );
+    }
 
+    public List<User> searchForUsers(String keyword ) {
         return userRepository.searchBykeywordLike(keyword);
-
     }
 
     @Transactional
