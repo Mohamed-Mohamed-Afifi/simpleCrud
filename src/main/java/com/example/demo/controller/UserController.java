@@ -30,9 +30,9 @@ public class UserController {
     // Method: GET Request
     // Get the user by id
     // Route: "/user/{userId}"
-    @GetMapping(path = "{userId}")
-    public User getUser(@PathVariable("userId") Long userId){
-        return  userService.getUser(userId);
+    @GetMapping(path = "{title}")
+    public List<User> getUserBySearch(@PathVariable("title") String title ){
+        return  userService.getUser(title);
     }
 
     // Method: POST Request

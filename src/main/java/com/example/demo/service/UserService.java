@@ -23,10 +23,9 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User getUser(Long userId ) {
-        return userRepository.findById(userId).orElseThrow(
-                ()-> new IllegalStateException("user with id "+ userId +" doesn't exist")
-        );
+    public List<User> getUser(String title ) {
+        return userRepository.searchByTitleLike(title);
+
     }
 
     @Transactional
