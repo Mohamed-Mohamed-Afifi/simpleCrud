@@ -24,6 +24,7 @@ public class UserService {
     }
 
     public List<User> getUser(String title ) {
+
         return userRepository.searchByTitleLike(title);
 
     }
