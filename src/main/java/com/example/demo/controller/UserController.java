@@ -34,6 +34,10 @@ public class UserController {
     public User getUser(@PathVariable("userId") Long userId){
         return  userService.getUser(userId);
     }
+
+    // Method: GET Request
+    // Search for users by keyword
+    // Route: "/user/searchby/{keyword}"
     @GetMapping(path = "/searchby/{keyword}")
     public List<User> searchForUsers(@PathVariable("keyword") String keyword ){
         return  userService.searchForUsers(keyword);

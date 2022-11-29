@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public List<User> searchForUsers(String keyword ) {
-        return userRepository.searchBykeywordLike(keyword);
+        return userRepository.searchBykeywordLike(keyword.toLowerCase().trim());
     }
 
     @Transactional
